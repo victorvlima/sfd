@@ -1,0 +1,9 @@
+Problema com NamedQueries:
+NamedQuery not found... resolvido criando NamedQueries e NamedQuery na própria Entidades.
+
+Arquivo consultas.xml não será utilizado.
+
+Cópia de driver postgresql-8.4 na pasta lib do projeto e do servitor tomcat.
+
+Adição de gerente.close(); nos métodos da classe DaoGenerico.
+

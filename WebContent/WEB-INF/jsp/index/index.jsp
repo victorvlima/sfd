@@ -1,0 +1,20 @@
+<div>
+	<table>
+		<tr>
+			<td>Documento
+			</td>
+			<td>Tramitação
+			</td>
+			<td>Processo
+			</td>
+		</tr>
+		<tr>
+			<td>Consulta
+			</td>
+			<td>Dúvida
+			</td>
+			<td>AjudaTI
+			</td>
+		</tr>
+	</table>
+</div>

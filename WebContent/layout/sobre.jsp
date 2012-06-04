@@ -1,0 +1,1 @@
+<center id="boas-vindas">Página excluída do decorator. Clique <a href="index.jsp">aqui</a> para voltar</center>
