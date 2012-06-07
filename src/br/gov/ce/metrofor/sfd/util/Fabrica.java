@@ -17,5 +17,5 @@ public class Fabrica {
 		}
 		return fabrica.createEntityManager();
 	}
-	
+
 }

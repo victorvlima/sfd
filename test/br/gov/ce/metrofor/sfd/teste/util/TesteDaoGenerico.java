@@ -11,18 +11,19 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import br.gov.ce.metrofor.sfd.util.DaoGenerico;
+import br.gov.ce.metrofor.sfd.util.EntidadeBase;
 
 public class TesteDaoGenerico {
 	
 	@Mock
 	private DaoGenerico daoGenericoMock;
 	
-	private Object obj;
+	private EntidadeBase entidadeBase;
 	
 	@Before
 	public void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
-		obj = new Object(); 
+//		entidadeBase = (EntidadeBase) new Object(); 
 	}
 	
 	@Test
@@ -39,9 +40,9 @@ public class TesteDaoGenerico {
 	}
 	@Test
 	public void testInsertObject() {
-		doNothing().when(this.daoGenericoMock).insert(obj);
-		this.daoGenericoMock.insert(obj);
-		verify(this.daoGenericoMock, times(1)).insert(obj);
+		doNothing().when(this.daoGenericoMock).insert(entidadeBase);
+		this.daoGenericoMock.insert(entidadeBase);
+		verify(this.daoGenericoMock, times(1)).insert(entidadeBase);
 	}
 	
 	@Test
@@ -52,9 +53,9 @@ public class TesteDaoGenerico {
 	}
 	@Test
 	public void testUpdateObject() {
-		doNothing().when(this.daoGenericoMock).update(obj);
-		this.daoGenericoMock.update(obj);
-		verify(this.daoGenericoMock, times(1)).update(obj);
+		doNothing().when(this.daoGenericoMock).update(entidadeBase);
+		this.daoGenericoMock.update(entidadeBase);
+		verify(this.daoGenericoMock, times(1)).update(entidadeBase);
 	}
 	
 }

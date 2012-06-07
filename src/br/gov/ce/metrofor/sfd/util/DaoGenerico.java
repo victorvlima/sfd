@@ -17,15 +17,16 @@ public class DaoGenerico {
 		gerente.getTransaction().begin();
 		gerente.persist(entidade);
 		gerente.getTransaction().commit();
-		gerente.close();
+//		gerente.close();
 		return entidade;
 	}
 
 	public EntidadeBase update(EntidadeBase entidade) {
+		entidade = selectById(entidade);
 		gerente.getTransaction().begin();
-		gerente.merge(entidade);
+		entidade =  gerente.merge(entidade);
 		gerente.getTransaction().commit();
-		gerente.close();
+//		gerente.close();
 		return entidade;
 	}
 
@@ -34,21 +35,30 @@ public class DaoGenerico {
 		gerente.getTransaction().begin();
 		gerente.remove(entidade);
 		gerente.getTransaction().commit();
+//		gerente.close();
 	}
 
 	public EntidadeBase selectById(EntidadeBase entidade) {
+		gerente.getTransaction().begin();
 		entidade = gerente.find(entidade.getClass(), entidade.getId());
-		gerente.close();
+		gerente.getTransaction().commit();
+//		gerente.close();
 		return entidade;
 	}
 
 	public List<EntidadeBase> selectByNamedQuery(String namedQuery) {
-		return selectByNamedQuery(namedQuery, new Object[0]);
+		gerente.getTransaction().begin();
+		List<EntidadeBase> lista = selectByNamedQuery(namedQuery, new Object[0]);
+		gerente.getTransaction().commit();
+//		gerente.close();
+		return lista;
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<EntidadeBase> selectByNamedQuery(String namedQuery,
 			Object... parameters) {
+		@SuppressWarnings("rawtypes")
+		List list = null;
 		try {
 			Query query = gerente.createNamedQuery(namedQuery);
 			if (parameters != null && parameters.length > 0) {
@@ -56,16 +66,16 @@ public class DaoGenerico {
 					query.setParameter(i + 1, parameters[i]);
 				}
 			}
-			@SuppressWarnings("rawtypes")
-			List list = query.getResultList();
+			list = query.getResultList();
 			return list;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
 			gerente.close();
 		}
-		gerente.close();
-		return null;
+//		gerente.close();
+		return list;
+//		return null;
 	}
 
 }
