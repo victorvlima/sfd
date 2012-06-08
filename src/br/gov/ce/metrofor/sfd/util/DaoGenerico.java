@@ -73,9 +73,9 @@ public class DaoGenerico {
 		} finally {
 			gerente.close();
 		}
-//		gerente.close();
-		return list;
-//		return null;
+		gerente.close();
+//		return list;
+		return null;
 	}
 
 }
