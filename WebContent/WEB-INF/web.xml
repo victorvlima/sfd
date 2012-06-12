@@ -9,10 +9,10 @@
 		<param-value>
 			 
 			<!-- 
-			br.com.caelum.vraptor.util.jpa,
+			br.com.caelum.vraptor.util.jpa
 			br.com.caelum.vraptor.converter.l10n,
-			 -->
 			br.gov.ce.metrofor.sfd
+			 -->
 		</param-value>
 	</context-param>
 	<context-param>

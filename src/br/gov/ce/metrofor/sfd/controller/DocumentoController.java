@@ -9,13 +9,14 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.gov.ce.metrofor.sfd.dao.DocumentoDao;
 import br.gov.ce.metrofor.sfd.model.Documento;
+import br.gov.ce.metrofor.sfd.util.DaoGenerico;
 import br.gov.ce.metrofor.sfd.util.EntidadeBase;
 
 @Resource
 public class DocumentoController {
 
-	private Result result;
-	private DocumentoDao documentoDao;
+	private final Result result;
+	private final DocumentoDao documentoDao;
 	private String msg;
 
 	public DocumentoController(Result result, DocumentoDao documentoDao) {
@@ -31,10 +32,10 @@ public class DocumentoController {
 	public void salvar(Documento documento) {
 		if (documento != null) {
 			if (documento.getId() == null) {
-				documentoDao.insert(documento);
+//				documentoDao.insert(documento);
 				this.msg = "Novo documento salvo com sucesso.";
 			} else {
-				documentoDao.update(documento);
+//				documentoDao.update(documento);
 				this.msg = "Documento atualizado com sucesso.";
 			}
 		} else {
