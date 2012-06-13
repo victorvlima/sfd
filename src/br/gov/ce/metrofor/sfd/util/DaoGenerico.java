@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 public class DaoGenerico {
-
+	
 	protected EntityManager gerente;
 
 	public DaoGenerico() {
@@ -21,7 +21,6 @@ public class DaoGenerico {
 	}
 
 	public EntidadeBase update(EntidadeBase entidade) {
-		entidade = selectById(entidade);
 		gerente.getTransaction().begin();
 		entidade = gerente.merge(entidade);
 		gerente.getTransaction().commit();

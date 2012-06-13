@@ -9,7 +9,6 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.gov.ce.metrofor.sfd.dao.DocumentoDao;
 import br.gov.ce.metrofor.sfd.model.Documento;
-import br.gov.ce.metrofor.sfd.util.DaoGenerico;
 import br.gov.ce.metrofor.sfd.util.EntidadeBase;
 
 @Resource
@@ -32,15 +31,26 @@ public class DocumentoController {
 	public void salvar(Documento documento) {
 		if (documento != null) {
 			if (documento.getId() == null) {
-//				documentoDao.insert(documento);
-				this.msg = "Novo documento salvo com sucesso.";
+				try {
+					documentoDao.insert(documento);
+					this.msg = "Novo documento salvo com sucesso.";
+					
+				} catch (Exception e) {
+					e.getStackTrace();
+				}
 			} else {
-//				documentoDao.update(documento);
-				this.msg = "Documento atualizado com sucesso.";
+				try {
+					documentoDao.update(documento);
+					this.msg = "Documento atualizado com sucesso.";
+					
+				} catch (Exception e) {
+					e.getStackTrace();
+				}
 			}
 		} else {
 			this.msg = "ERRO: Documento nulo.";
 		}
+		formulario();
 		result.include("msg", this.msg).redirectTo(this.getClass()).formulario();
 	}
 
@@ -55,8 +65,12 @@ public class DocumentoController {
 
 	@Get @Path("/documentos")
 	public void listar() {
-		List<EntidadeBase> documentos = documentoDao.selectByNamedQuery("documentos");
-		result.include("documentos", documentos);
+		try {
+			List<EntidadeBase> documentos = documentoDao.selectByNamedQuery("documentos");
+			result.include("documentos", documentos);
+		} catch (Exception e) {
+			e.getStackTrace();
+		}
 	}
 
 }

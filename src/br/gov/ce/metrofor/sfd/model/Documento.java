@@ -1,21 +1,26 @@
 package br.gov.ce.metrofor.sfd.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+
+import br.gov.ce.metrofor.sfd.util.EntidadeBase;
 
 @Entity
 //@NamedQueries({
 //	@NamedQuery(name="documentos", query="SELECT d FROM Documento d ORDER BY d.numero")
 //})
-//@SequenceGenerator(name="sequence_documentos", sequenceName="sequence_documentos", allocationSize=1, initialValue=1)
-public class Documento {
+@SequenceGenerator(name="sequence_documentos", sequenceName="sequence_documentos", allocationSize=1, initialValue=1)
+public class Documento extends EntidadeBase implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(generator="sequence_documentos")	//(strategy=GenerationType.AUTO)
 	private Long id;
 	
 //	@NotNull @Size(max=10)
@@ -43,6 +48,10 @@ public class Documento {
 		return id;
 	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	public String getNumero() {
 		return numero;
 	}

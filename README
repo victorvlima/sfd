@@ -1,5 +1,6 @@
 SISTEMA DE FLUXO DE DOCUMENTO
 --------------------------------------------------------------------------------
+Objetivo primário:
 
 Projeto básico para controlar o fluxo de documentos departametais.
 
@@ -8,3 +9,10 @@ Objetivo secundário:
 1 - VRaptor
 2 - Sitemesh
 3 - JPA
+
+Além da motivação de Samuel Pinheiro!
+
+Exemplos:
+http://dkist.me/blog/2010/05/introducao-ao-vraptor-crud/
+http://www.wbotelhos.com.br/2009/12/07/iniciando-com-vraptor-3/
+http://www.objectdb.com/
