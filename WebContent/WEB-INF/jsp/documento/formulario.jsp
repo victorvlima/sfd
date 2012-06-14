@@ -6,7 +6,7 @@
 		<table>
 			<tr>
 				<td>ID:</td>
-				<td><input type="text" name="id" readonly
+				<td><input type="text" name="documento.id" readonly
 					value="${documento.id}" /></td>
 			</tr>
 			<tr>

@@ -23,35 +23,28 @@ public class DocumentoController {
 		this.documentoDao = documentoDao;
 	}
 
-	@Get @Path("/documento")
+	@Get
+	@Path("/documento")
 	public void formulario() {
 	}
 
-	@Post @Path("/documento/salvar")
+	@Post
+	@Path("/documento/salvar")
 	public void salvar(Documento documento) {
 		if (documento != null) {
 			if (documento.getId() == null) {
-				try {
-					documentoDao.insert(documento);
-					this.msg = "Novo documento salvo com sucesso.";
-					
-				} catch (Exception e) {
-					e.getStackTrace();
-				}
+				documentoDao.insert(documento);
+				this.msg = "Novo documento salvo com sucesso.";
 			} else {
-				try {
-					documentoDao.update(documento);
-					this.msg = "Documento atualizado com sucesso.";
-					
-				} catch (Exception e) {
-					e.getStackTrace();
-				}
+				documentoDao.update(documento);
+				this.msg = "Documento " + documento.getId().toString()
+						+ " atualizado com sucesso.";
 			}
 		} else {
 			this.msg = "ERRO: Documento nulo.";
 		}
-		formulario();
-		result.include("msg", this.msg).redirectTo(this.getClass()).formulario();
+		result.include("msg", this.msg).redirectTo(this.getClass())
+				.formulario();
 	}
 
 	@Path("/documento/editar/{documento.id}")
@@ -63,10 +56,11 @@ public class DocumentoController {
 		result.redirectTo(this.getClass()).formulario();
 	}
 
-	@Get @Path("/documentos")
+	@Path("/documentos")
 	public void listar() {
 		try {
-			List<EntidadeBase> documentos = documentoDao.selectByNamedQuery("documentos");
+			List<EntidadeBase> documentos = documentoDao
+					.selectByNamedQuery("documentos");
 			result.include("documentos", documentos);
 		} catch (Exception e) {
 			e.getStackTrace();

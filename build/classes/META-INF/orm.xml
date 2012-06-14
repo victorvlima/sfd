@@ -5,7 +5,7 @@
      xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
  
      <named-query name="documentos">
-          <query>SELECT d FROM Documento d ORDER BY d.numero</query>
+          <query>SELECT d FROM Documento d ORDER BY d.id</query>
      </named-query>
  
 </entity-mappings>

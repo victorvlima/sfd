@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 public class DaoGenerico {
-	
+
 	protected EntityManager gerente;
 
 	public DaoGenerico() {
@@ -35,16 +35,16 @@ public class DaoGenerico {
 	}
 
 	public EntidadeBase selectById(EntidadeBase entidade) {
-//		gerente.getTransaction().begin();
+		// gerente.getTransaction().begin();
 		entidade = gerente.find(entidade.getClass(), entidade.getId());
-//		gerente.getTransaction().commit();
+		// gerente.getTransaction().commit();
 		return entidade;
 	}
 
 	public List<EntidadeBase> selectByNamedQuery(String namedQuery) {
-		gerente.getTransaction().begin();
+		// gerente.getTransaction().begin();
 		List<EntidadeBase> lista = selectByNamedQuery(namedQuery, new Object[0]);
-		gerente.getTransaction().commit();
+		// gerente.getTransaction().commit();
 		return lista;
 	}
 
