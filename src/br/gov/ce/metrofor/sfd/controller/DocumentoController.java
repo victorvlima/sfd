@@ -7,6 +7,8 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.Validator;
+import br.com.caelum.vraptor.validator.Validations;
 import br.gov.ce.metrofor.sfd.dao.DocumentoDao;
 import br.gov.ce.metrofor.sfd.model.Documento;
 import br.gov.ce.metrofor.sfd.util.EntidadeBase;
@@ -16,11 +18,13 @@ public class DocumentoController {
 
 	private final Result result;
 	private final DocumentoDao documentoDao;
+	private final Validator validador;
 	private String msg;
 
-	public DocumentoController(Result result, DocumentoDao documentoDao) {
+	public DocumentoController(Result result, DocumentoDao documentoDao, Validator validador) {
 		this.result = result;
 		this.documentoDao = documentoDao;
+		this.validador = validador;
 	}
 
 	@Get
@@ -30,7 +34,11 @@ public class DocumentoController {
 
 	@Post
 	@Path("/documento/salvar")
-	public void salvar(Documento documento) {
+	public void salvar(final Documento documento) {
+		validador.checking(new Validations(){{
+			that(documento.getAssunto().isEmpty(), "erro", "documento.assunto.nulo");
+		}});
+		validador.onErrorUsePageOf(this).formulario();
 		if (documento != null) {
 			if (documento.getId() == null) {
 				documentoDao.insert(documento);
