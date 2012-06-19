@@ -40,7 +40,7 @@ public class DocumentoController {
 					|| documento.getAssunto().isEmpty()) {
 				validador.add(new ValidationMessage("assunto.nulo", "error"));
 			}
-			validador.onErrorUsePageOf(DocumentoController.class).formulario();
+			validador.onErrorUsePageOf(this.getClass()).formulario();
 			if (documento.getId() == null) {
 				documentoDao.insert(documento);
 				this.msg = "Novo documento salvo com sucesso.";

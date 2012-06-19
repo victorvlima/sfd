@@ -1,13 +1,5 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-	
-<div id="errors">
-	<ul>
-		<c:forEach items="${errors}" var="error">
-			<li>${error.category } - ${error.message }</li>
-		</c:forEach>
-	</ul>
-</div>
 
 <div>
 	${msg}
@@ -16,8 +8,8 @@
 		<table>
 			<tr>
 				<td><label for="documento.id">ID:</label></td>
-				<td><input id="documento.id" type="text" name="documento.id" readonly
-					value="${documento.id}" /></td>
+				<td><input id="documento.id" type="text" name="documento.id"
+					readonly value="${documento.id}" /></td>
 			</tr>
 			<tr>
 				<td>Número:</td>
@@ -26,8 +18,8 @@
 			</tr>
 			<tr>
 				<td><label for="documento.assunto">Assunto:</label></td>
-				<td><input id="documento.assunto" type="text" name="documento.assunto"
-					value="${documento.assunto}" /></td>
+				<td><input id="documento.assunto" type="text"
+					name="documento.assunto" value="${documento.assunto}" /></td>
 			</tr>
 			<tr>
 				<td>Interessado:</td>
