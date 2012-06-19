@@ -5,6 +5,10 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
 		<link type="text/css" rel="stylesheet" href="css/geral.css"/>
+		<script type="text/javascript" src="js/jquery/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery/jquery-1.7.0.min.js"></script>
+		<script type="text/javascript" src="js/jquery/jquery-validate.min.js"></script>
+		<script type="text/javascript" src="js/sfd/documento.js"></script>
 		<title>Sistema de Fluxo de Documentos</title>
 	</head>
 	<body id="corpo">

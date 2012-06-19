@@ -8,7 +8,7 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
-import br.com.caelum.vraptor.validator.Validations;
+import br.com.caelum.vraptor.validator.ValidationMessage;
 import br.gov.ce.metrofor.sfd.dao.DocumentoDao;
 import br.gov.ce.metrofor.sfd.model.Documento;
 import br.gov.ce.metrofor.sfd.util.EntidadeBase;
@@ -16,10 +16,10 @@ import br.gov.ce.metrofor.sfd.util.EntidadeBase;
 @Resource
 public class DocumentoController {
 
-	private final Result result;
-	private final DocumentoDao documentoDao;
-	private final Validator validador;
+	private Result result;
+	private DocumentoDao documentoDao;
 	private String msg;
+	private Validator validador;
 
 	public DocumentoController(Result result, DocumentoDao documentoDao, Validator validador) {
 		this.result = result;
@@ -34,12 +34,13 @@ public class DocumentoController {
 
 	@Post
 	@Path("/documento/salvar")
-	public void salvar(final Documento documento) {
-		validador.checking(new Validations(){{
-			that(documento.getAssunto().isEmpty(), "erro", "documento.assunto.nulo");
-		}});
-		validador.onErrorUsePageOf(this).formulario();
+	public void salvar(Documento documento) {
 		if (documento != null) {
+			if (documento.getAssunto() == null
+					|| documento.getAssunto().isEmpty()) {
+				validador.add(new ValidationMessage("assunto.nulo", "error"));
+			}
+			validador.onErrorUsePageOf(DocumentoController.class).formulario();
 			if (documento.getId() == null) {
 				documentoDao.insert(documento);
 				this.msg = "Novo documento salvo com sucesso.";

@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
+import com.sun.istack.internal.NotNull;
+
 import br.gov.ce.metrofor.sfd.util.EntidadeBase;
 
 @Entity
@@ -26,7 +28,7 @@ public class Documento extends EntidadeBase implements Serializable {
 //	@NotNull @Size(max=10)
 	private String numero;
 	
-//	@Column(nullable=false)
+	@NotNull
 	private String assunto;
 	
 //	@Column(nullable=false)

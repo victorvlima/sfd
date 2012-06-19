@@ -1,30 +1,22 @@
-<head>
-<link href="http://k2cloud.net/vraptor/common/css/validation.css"
-	rel="stylesheet" type="text/css" media="all">
-<script src="http://k2cloud.net/vraptor/common/js/jquery-1.4.4.min.js"
-	type="text/javascript"></script>
-<script
-	src="http://k2cloud.net/vraptor/common/js/jquery.vraptor.validate.js"
-	type="text/javascript"></script>
-</head>
-
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+	
 <div id="errors">
 	<ul>
-		<c:forEach var="error" items="${errors.iterator}">
-			<li><fmt:message key="${error.key}" /></li>
+		<c:forEach items="${errors}" var="error">
+			<li>${error.category } - ${error.message }</li>
 		</c:forEach>
 	</ul>
 </div>
+
 <div>
 	${msg}
-	<form action="<c:url value="/documento/salvar"/>" method="post">
+	<form id="formDocumento" action="<c:url value="/documento/salvar"/>"
+		method="post">
 		<table>
 			<tr>
-				<td>ID:</td>
-				<td><input type="text" name="documento.id" readonly
+				<td><label for="documento.id">ID:</label></td>
+				<td><input id="documento.id" type="text" name="documento.id" readonly
 					value="${documento.id}" /></td>
 			</tr>
 			<tr>
@@ -33,8 +25,8 @@
 					value="${documento.numero}" /></td>
 			</tr>
 			<tr>
-				<td>Assunto:</td>
-				<td><input type="text" name="documento.assunto"
+				<td><label for="documento.assunto">Assunto:</label></td>
+				<td><input id="documento.assunto" type="text" name="documento.assunto"
 					value="${documento.assunto}" /></td>
 			</tr>
 			<tr>
