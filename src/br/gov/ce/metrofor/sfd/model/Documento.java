@@ -13,9 +13,6 @@ import com.sun.istack.internal.NotNull;
 import br.gov.ce.metrofor.sfd.util.EntidadeBase;
 
 @Entity
-//@NamedQueries({
-//	@NamedQuery(name="documentos", query="SELECT d FROM Documento d ORDER BY d.numero")
-//})
 @SequenceGenerator(name="sequence_documentos", sequenceName="sequence_documentos", allocationSize=1, initialValue=1)
 public class Documento extends EntidadeBase implements Serializable {
 	

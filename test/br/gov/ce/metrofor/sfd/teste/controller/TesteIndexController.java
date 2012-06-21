@@ -11,6 +11,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.util.test.MockResult;
 import br.gov.ce.metrofor.sfd.controller.IndexController;
 
 public class TesteIndexController {
@@ -18,12 +19,13 @@ public class TesteIndexController {
 	@Mock
 	private Result resultMock;
 	
+	@Mock
 	private IndexController ic;
 	
 	@Before
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
-//		this.resultMock = new MockResult();
+		this.resultMock = new MockResult();
 		this.ic = new IndexController(this.resultMock);
 	}
 	

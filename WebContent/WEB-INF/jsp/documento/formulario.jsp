@@ -1,8 +1,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <div>
-	${msg}
 	<form id="formDocumento" action="<c:url value="/documento/salvar"/>"
 		method="post">
 		<table>
@@ -49,7 +47,7 @@
 			<tr>
 				<td>Data:</td>
 				<td><input type="text" name="documento.data"
-					value="${documento.data}" /></td>
+					value="<fmt:formatDate pattern="dd/MM/yyyy" value="${documento.data}" />" /></td>
 			</tr>
 		</table>
 		<input type="submit" value="Salvar" />

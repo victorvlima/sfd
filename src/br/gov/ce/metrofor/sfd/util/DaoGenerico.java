@@ -35,16 +35,12 @@ public class DaoGenerico {
 	}
 
 	public EntidadeBase selectById(EntidadeBase entidade) {
-		// gerente.getTransaction().begin();
 		entidade = gerente.find(entidade.getClass(), entidade.getId());
-		// gerente.getTransaction().commit();
 		return entidade;
 	}
 
 	public List<EntidadeBase> selectByNamedQuery(String namedQuery) {
-		// gerente.getTransaction().begin();
 		List<EntidadeBase> lista = selectByNamedQuery(namedQuery, new Object[0]);
-		// gerente.getTransaction().commit();
 		return lista;
 	}
 

@@ -36,11 +36,13 @@ public class DocumentoController {
 	@Path("/documento/salvar")
 	public void salvar(Documento documento) {
 		if (documento != null) {
+			
 			if (documento.getAssunto() == null
 					|| documento.getAssunto().isEmpty()) {
-				validador.add(new ValidationMessage("assunto.nulo", "error"));
+				validador.add(new ValidationMessage("documento.assunto.nulo", "error"));
 			}
 			validador.onErrorUsePageOf(this.getClass()).formulario();
+			
 			if (documento.getId() == null) {
 				documentoDao.insert(documento);
 				this.msg = "Novo documento salvo com sucesso.";

@@ -21,9 +21,9 @@ public class TesteFabrica {
 		MockitoAnnotations.initMocks(this);
 	}
 	
-	@Test
+	@Test @Ignore
 	public void testFabrica() {
-		this.fabricaMock = new Fabrica();
+//		this.fabricaMock = new Fabrica();
 		assertNotNull(this.fabricaMock);
 	}
 	

@@ -5,7 +5,15 @@
      xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
  
      <named-query name="documentos">
-          <query>SELECT d FROM Documento d ORDER BY d.id</query>
+          <query>SELECT doc FROM Documento doc ORDER BY doc.id</query>
+     </named-query>
+ 
+     <named-query name="gerencias">
+          <query>SELECT ger FROM Gerencia ger ORDER BY ger.id</query>
+     </named-query>
+ 
+     <named-query name="diretorias">
+          <query>SELECT dir FROM Diretoria dir ORDER BY dir.id</query>
      </named-query>
  
 </entity-mappings>
