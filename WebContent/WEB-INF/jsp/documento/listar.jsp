@@ -4,26 +4,29 @@
 	<table border="1">
 		<thead>
 			<tr>
-				<td width="50">ID</td>
+				<td width="5" align="center">ID</td>
 				<td width="50">Número</td>
 				<td width="300">Assunto</td>
 				<td width="10">Data</td>
-				<td width="10">Processo</td>
-				<td width="75">Editar</td>
-				<td width="75">Excluir</td>
+				<td width="10" align="center">Processo</td>
+				<td width="10" align="center">Editar</td>
+				<td width="10" align="center">Excluir</td>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${documentos}" var="documento">
 				<tr>
-					<td>${documento.id}</td>
+					<td align="center">${documento.id}</td>
 					<td>${documento.numero}</td>
 					<td>${documento.assunto}</td>
-					<td><fmt:formatDate pattern="dd/MM/yyyy" value="${documento.data}" /></td>
-					<td>${documento.processo}</td>
-					<td><a href="<c:url value="documento/editar/${documento.id}"/>">Editar</a>
-					</td>
-					<td><a href="<c:url value="documento/excluir/${documento.id}"/>">Excluir</a></td>
+					<td align="center"><fmt:formatDate pattern="dd/MM/yyyy" value="${documento.data}" /></td>
+					<td align="center">${documento.processo}</td>
+					<td align="center"><a
+						href="<c:url value="/documento/editar/${documento.id}"/>"><img
+							src="<c:url value="/img/grid/editar.png"/>" /></a></td>
+					<td align="center"><a
+						href="<c:url value="/documento/excluir/${documento.id}"/>"><img
+							src="<c:url value="/img/grid/excluir.png"/>" /></a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

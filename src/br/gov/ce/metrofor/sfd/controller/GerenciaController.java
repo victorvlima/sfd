@@ -11,6 +11,7 @@ import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.validator.ValidationMessage;
 import br.gov.ce.metrofor.sfd.dao.DiretoriaDao;
 import br.gov.ce.metrofor.sfd.dao.GerenciaDao;
+import br.gov.ce.metrofor.sfd.model.Diretoria;
 import br.gov.ce.metrofor.sfd.model.Gerencia;
 import br.gov.ce.metrofor.sfd.util.EntidadeBase;
 
@@ -23,8 +24,8 @@ public class GerenciaController {
 	private String msg;
 	private Validator validador;
 
-	public GerenciaController(Result result, GerenciaDao gerenciaDao, DiretoriaDao diretoriaDao,
-			Validator validador) {
+	public GerenciaController(Result result, GerenciaDao gerenciaDao,
+			DiretoriaDao diretoriaDao, Validator validador) {
 		this.result = result;
 		this.gerenciaDao = gerenciaDao;
 		this.diretoriaDao = diretoriaDao;
@@ -42,31 +43,26 @@ public class GerenciaController {
 	@Post
 	@Path("/gerencia/salvar")
 	public void salvar(Gerencia gerencia) {
-		//
-		if (gerencia != null) {
-			if (gerencia.getDescricao() == null
-					|| gerencia.getDescricao().isEmpty()) {
-				validador.add(new ValidationMessage(
-						"Informar Descrição da Gerência", "error"));
-			}
-			if (gerencia.getSigla() == null || gerencia.getSigla().isEmpty()) {
-				validador.add(new ValidationMessage(
-						"Informar Sigla da Gerência", "error"));
-			}
-			validador.onErrorUsePageOf(this.getClass()).formulario();
-			if (gerencia.getId() == null) {
-				gerenciaDao.insert(gerencia);
-				this.msg = "Nova Gerência salva com sucesso.";
-			} else {
-				gerenciaDao.update(gerencia);
-				this.msg = "Gerência " + gerencia.getId().toString()
-						+ " atualizada com sucesso.";
-			}
-		} else {
-			this.msg = "ERRO: Gerência nula.";
+		gerencia.setDiretoria((Diretoria) diretoriaDao.selectById(gerencia.getDiretoria()));
+		if (gerencia.getDescricao() == null
+				|| gerencia.getDescricao().isEmpty()) {
+			validador.add(new ValidationMessage(
+					"Informar Descrição da Gerência", "error"));
 		}
-		result.include("msg", this.msg).redirectTo(this.getClass())
-				.formulario();
+		if (gerencia.getSigla() == null || gerencia.getSigla().isEmpty()) {
+			validador.add(new ValidationMessage("Informar Sigla da Gerência",
+					"error"));
+		}
+		validador.onErrorRedirectTo(this.getClass()).formulario();
+		if (gerencia.getId() == null) {
+			gerenciaDao.insert(gerencia);
+			this.msg = "Nova Gerência salva com sucesso.";
+		} else {
+			gerenciaDao.update(gerencia);
+			this.msg = "Gerência " + gerencia.getId().toString()
+					+ " atualizada com sucesso.";
+		}
+		result.include("msg", this.msg).redirectTo(this.getClass()).listar();
 	}
 
 	@Path("/gerencia/editar/{gerencia.id}")

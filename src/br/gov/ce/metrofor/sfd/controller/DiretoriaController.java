@@ -59,7 +59,7 @@ public class DiretoriaController {
 			this.msg = "ERRO: Diretoria nula.";
 		}
 		result.include("msg", this.msg).redirectTo(this.getClass())
-				.formulario();
+				.listar();
 	}
 
 	@Path("/diretoria/editar/{diretoria.id}")

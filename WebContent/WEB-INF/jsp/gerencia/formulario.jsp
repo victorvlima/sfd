@@ -21,15 +21,11 @@
 			</tr>
 			<tr>
 				<td>Diretoria:</td>
-				<td><select name="gerencia.diretoria">
+				<td><select name="gerencia.diretoria.id">
 						<c:forEach var="diretoria" items="${diretorias}">
 							<option value="${diretoria.id}">${diretoria.sigla}</option>
 						</c:forEach>
 				</select></td>
-<%-- 
-				<td><input id="gerencia.diretoria" type="text"
-					name="gerencia.diretoria" value="${gerencia.diretoria}" /></td>
- --%>
 			</tr>
 		</table>
 		<input type="submit" value="Salvar" />

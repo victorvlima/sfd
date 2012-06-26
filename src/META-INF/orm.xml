@@ -16,4 +16,12 @@
           <query>SELECT dir FROM Diretoria dir ORDER BY dir.id</query>
      </named-query>
  
+     <named-query name="diretoriaById">
+          <query>SELECT dir FROM Diretoria dir WHERE dir.id = ?1</query>
+     </named-query>
+ 
+     <named-query name="diretoriaBySigla">
+          <query>SELECT dir FROM Diretoria dir WHERE dir.sigla = :sigla</query>
+     </named-query>
+ 
 </entity-mappings>

@@ -4,22 +4,25 @@
 	<table border="1">
 		<thead>
 			<tr>
-				<td width="50">ID</td>
-				<td width="300">Descrição</td>
-				<td width="100">Sigla</td>
-				<td width="75">Editar</td>
-				<td width="75">Excluir</td>
+				<td width="5" align="center">ID</td>
+				<td width="300" align="center">Descrição</td>
+				<td width="100" align="center">Sigla</td>
+				<td width="10" align="center">Editar</td>
+				<td width="10" align="center">Excluir</td>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${diretorias}" var="diretoria">
 				<tr>
-					<td>${diretoria.id}</td>
+					<td align="center">${diretoria.id}</td>
 					<td>${diretoria.descricao}</td>
 					<td>${diretoria.sigla}</td>
-					<td><a href="<c:url value="/diretoria/editar/${diretoria.id}"/>">Editar</a>
-					</td>
-					<td><a href="<c:url value="/diretoria/excluir/${diretoria.id}"/>">Excluir</a></td>
+					<td align="center"><a
+						href="<c:url value="/diretoria/editar/${diretoria.id}"/>"><img
+							src="<c:url value="/img/grid/editar.png"/>" /></a></td>
+					<td align="center"><a
+						href="<c:url value="/diretoria/excluir/${diretoria.id}"/>"><img
+							src="<c:url value="/img/grid/excluir.png"/>" /></a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

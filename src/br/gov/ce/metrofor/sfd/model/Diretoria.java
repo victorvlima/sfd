@@ -2,6 +2,7 @@ package br.gov.ce.metrofor.sfd.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,6 +20,7 @@ public class Diretoria extends EntidadeBase implements Serializable {
 	@GeneratedValue(generator="sequence_diretorias")	//(strategy=GenerationType.AUTO)
 	private Long id;
 	
+	@Column(nullable=false, length=10, unique=true)
 	private String sigla;
 	
 	private String descricao;

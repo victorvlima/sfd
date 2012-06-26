@@ -55,7 +55,7 @@ public class DocumentoController {
 			this.msg = "ERRO: Documento nulo.";
 		}
 		result.include("msg", this.msg).redirectTo(this.getClass())
-				.formulario();
+				.listar();
 	}
 
 	@Path("/documento/editar/{documento.id}")
