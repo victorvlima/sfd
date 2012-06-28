@@ -22,6 +22,7 @@
 			<tr>
 				<td>Diretoria:</td>
 				<td><select name="gerencia.diretoria.id">
+						<option value="null">Selecione...</option>
 						<c:forEach var="diretoria" items="${diretorias}">
 							<option value="${diretoria.id}">${diretoria.sigla}</option>
 						</c:forEach>

@@ -16,8 +16,8 @@
 			</tr>
 			<tr>
 				<td><label for="documento.assunto">Assunto:</label></td>
-				<td><input id="documento.assunto" type="text"
-					name="documento.assunto" value="${documento.assunto}" /></td>
+				<td><input type="text" name="documento.assunto"
+					value="${documento.assunto}" /></td>
 			</tr>
 			<tr>
 				<td>Interessado:</td>
@@ -38,10 +38,9 @@
 				<td>Processo:</td>
 				<td><select name="documento.processo">
 						<option value="true"
-							<c:if test="${documento.processo eq true}">
-								selected  
-	    			        </c:if>>SIM</option>
-						<option value="false">NÃO</option>
+							${documento.processo eq 'true'?  'selected' : ''}>SIM</option>
+						<option value="false"
+							${documento.processo eq 'false'? 'selected' : ''}>NÃO</option>
 				</select></td>
 			</tr>
 			<tr>

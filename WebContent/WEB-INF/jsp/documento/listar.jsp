@@ -1,5 +1,5 @@
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div>
 	<table border="1">
 		<thead>
@@ -19,8 +19,10 @@
 					<td align="center">${documento.id}</td>
 					<td>${documento.numero}</td>
 					<td>${documento.assunto}</td>
-					<td align="center"><fmt:formatDate pattern="dd/MM/yyyy" value="${documento.data}" /></td>
-					<td align="center">${documento.processo}</td>
+					<td align="center"><fmt:formatDate pattern="dd/MM/yyyy"
+							value="${documento.data}" /></td>
+					<td align="center">${documento.processo eq 'true'? 'SIM' :
+						"NÃO"}</td>
 					<td align="center"><a
 						href="<c:url value="/documento/editar/${documento.id}"/>"><img
 							src="<c:url value="/img/grid/editar.png"/>" /></a></td>

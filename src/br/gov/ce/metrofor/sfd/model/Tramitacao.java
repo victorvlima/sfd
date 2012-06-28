@@ -17,7 +17,7 @@ public class Tramitacao extends EntidadeBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(generator="sequence_tramitacoes")	//(strategy=GenerationType.AUTO)
+	@GeneratedValue(generator="sequence_tramitacoes")
 	private Long id;
 	
 	private Documento documento;
