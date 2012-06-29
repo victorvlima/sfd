@@ -1,3 +1,5 @@
+<%@ page language="java" import="java.util.*"
+	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -6,18 +8,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <link type="text/css" rel="stylesheet"
 	href="<c:url value="/css/geral.css"/>" />
-<%-- 	
+
 <script type="text/javascript"
-	src="<c:url value="/js/jquery/jquery.js"/>"></script>
+	src="<c:url value="/js/jquery/jquery-1.7.2.js"/>"></script>
 <script type="text/javascript"
-	src="<c:url value="/js/jquery/jquery.maskedinput-1.1.4.pack.js"/>"></script>
+	src="<c:url value="/js/jquery/jquery-1.7.2.min.js"/>"></script>
 <script type="text/javascript"
-	src="<c:url value="/js/jquery/jquery.ui.datepicker-pt-BR.js"/>"></script>
+	src="<c:url value="/js/jquery/jquery-ui-1.8.21.custom.min.js"/>"></script>
 <script type="text/javascript"
-	src="<c:url value="/js/jquery/jquery-validate.min.js"/>"></script>
+	src="<c:url value="/js/jquery/jquery.maskedinput.js"/>"></script>
 <script type="text/javascript"
-	src="<c:url value="/js/jquery/jquery-1.2.6.min.js"/>"></script>
- --%>	
+	src="<c:url value="/js/jquery/jquery.validate-1.9.0.js"/>"></script>
+	
+<sitemesh:write property='head' />
 <title>Sistema de Fluxo de Documentos</title>
 </head>
 <body id="corpo">
